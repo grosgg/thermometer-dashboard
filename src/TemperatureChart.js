@@ -10,20 +10,23 @@ function TemperatureChart({ timestamps, data }) {
           data: data,
           borderColor: 'red',
           fill: false,
+          pointRadius: 1,
         }],
       }}
       options={{
         scales: {
           xAxes: [{
             type: 'time',
+            time: {
+              stepSize: 5,
+            },
           }],
           yAxes: [{
             type: 'linear',
             display: true,
             position: 'left',
             ticks: {
-              suggestedMin: 15,
-              suggestedMax: 20,
+              stepSize: 1,
             },
           }],
         },

@@ -10,21 +10,24 @@ function HumidityChart({ timestamps, data }) {
           data: data,
           borderColor: 'blue',
           fill: false,
+          pointRadius: 1,
         }],
       }}
       options={{
         scales: {
           xAxes: [{
             type: 'time',
+            time: {
+              stepSize: 5,
+            },
           }],
           yAxes: [{
             type: 'linear',
             display: true,
             position: 'left',
             ticks: {
-              suggestedMin: 35,
-              suggestedMax: 50,
-            },
+              stepSize: 1,
+            }
           }],
         },
       }}
