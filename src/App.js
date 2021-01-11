@@ -1,7 +1,8 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 
-import TemperatureChart from './TemperatureChart';
-import HumidityChart from './HumidityChart';
+import './App.css';
+
+import SampleChart from './SampleChart';
 import LatestSample from './LatestSample';
 
 function App() {
@@ -41,17 +42,21 @@ function App() {
     return <div>Loading...</div>;
   } else {
     return (
-      <Fragment>
-        <LatestSample value={samples[0]} />
-        <TemperatureChart
+      <div className="app">
+        <LatestSample value={samples[samples.length-1]} />
+        <SampleChart
           timestamps={samples.map(s => s.timestamp)}
           data={samples.map(s => s.temperature)}
+          label="Temperature"
+          color="red"
         />
-        <HumidityChart
+        <SampleChart
           timestamps={samples.map(s => s.timestamp)}
           data={samples.map(s => s.humidity)}
+          label="Humidity"
+          color="blue"
         />
-      </Fragment>
+      </div>
     );
   }
 }

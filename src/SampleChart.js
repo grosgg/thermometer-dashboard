@@ -1,14 +1,14 @@
 import { Line } from '@reactchartjs/react-chart.js';
 
-function TemperatureChart({ timestamps, data }) {
+function SampleChart({ timestamps, data, label, color }) {
   return (
     <Line
       data={{
         labels: timestamps.map(t => parseInt(t) * 1000),
         datasets: [{
-          label: 'Temperature',
+          label: label,
           data: data,
-          borderColor: 'red',
+          borderColor: color,
           fill: false,
           pointRadius: 1,
         }],
@@ -27,7 +27,7 @@ function TemperatureChart({ timestamps, data }) {
             position: 'left',
             ticks: {
               stepSize: 1,
-            },
+            }
           }],
         },
       }}
@@ -35,4 +35,4 @@ function TemperatureChart({ timestamps, data }) {
   )
 }
 
-export default TemperatureChart;
+export default SampleChart;

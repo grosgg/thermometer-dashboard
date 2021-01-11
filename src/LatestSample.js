@@ -1,6 +1,9 @@
 function LatestSample ({ value = {temperature: 0, humidity: 0} }) {
   return (
-    <h1>{value.temperature}ºC - {value.humidity}%</h1> 
+    <div className="latest">
+      <div>{value.temperature}ºC</div>
+      <div>{value.humidity}%</div>
+    </div>
   );
 }
 
