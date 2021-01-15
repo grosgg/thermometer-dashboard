@@ -4,6 +4,7 @@ import './App.css';
 
 import SampleChart from './SampleChart';
 import LatestSample from './LatestSample';
+import PeriodSelect from './PeriodSelect';
 
 function App() {
   const [error, setError] = useState(null);
@@ -52,6 +53,7 @@ function App() {
   } else {
     return (
       <div className="app">
+        <PeriodSelect period={period} setPeriod={setPeriod} />
         <LatestSample value={samples[samples.length-1]} />
         <SampleChart
           timestamps={samples.map(s => s.timestamp)}
