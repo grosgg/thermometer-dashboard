@@ -9,12 +9,21 @@ function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [samples, setSamples] = useState([]);
+  const [period, setPeriod] = useState('1h');
 
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/samples/minutes`, {
+    const from = (period) => {
+      switch(period) {
+        case '1d': return parseInt(Date.now() / 1000 - 3600 * 24).toString(10);
+        case '1m': return parseInt(Date.now() / 1000 - 3600 * 24 * 30).toString(10);
+        case '1y': return parseInt(Date.now() / 1000 - 3600 * 24 * 365).toString(10);
+        default: return parseInt(Date.now() / 1000 - 3600).toString(10);
+      }
+    };
+    fetch(`${process.env.REACT_APP_API_URL}/samples/${period}?from=${from(period)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +43,7 @@ function App() {
           setError(error);
         }
       )
-  }, [])
+  }, [period]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
