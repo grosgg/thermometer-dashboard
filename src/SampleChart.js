@@ -1,6 +1,6 @@
 import { Line } from '@reactchartjs/react-chart.js';
 
-function SampleChart({ timestamps, data, label, color }) {
+function SampleChart({ timestamps, data, label, unit, color }) {
   return (
     <Line
       data={{
@@ -10,7 +10,7 @@ function SampleChart({ timestamps, data, label, color }) {
           data: data,
           borderColor: color,
           fill: false,
-          pointRadius: 1,
+          pointRadius: 2,
         }],
       }}
       options={{
@@ -18,7 +18,11 @@ function SampleChart({ timestamps, data, label, color }) {
           xAxes: [{
             type: 'time',
             time: {
-              stepSize: 5,
+              unit: unit,
+              displayFormats: {
+                minute: 'HH:mm',
+                hour: 'HH:mm'
+              }
             },
           }],
           yAxes: [{

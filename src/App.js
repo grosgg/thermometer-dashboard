@@ -60,12 +60,14 @@ function App() {
           data={samples.map(s => s.temperature)}
           label="Temperature"
           color="red"
+          unit={period === '1m' ? 'day' : null}
         />
         <SampleChart
           timestamps={samples.map(s => s.timestamp)}
           data={samples.map(s => s.humidity)}
           label="Humidity"
           color="blue"
+          unit={period === '1m' ? 'day' : null}
         />
       </div>
     );
