@@ -8,18 +8,26 @@ body {
   padding: 2em;
 }
 
-.app > canvas, .latest {
+.app > canvas, #latest {
   background-color: white;
   border-radius: 0.5em;
   margin: 1em 0;
 }
 
-.latest {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1em;
+#latest {
+  padding: 1em 1em 0.5em 1em;
 }
 
-.latest > div {
+#values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#values > div {
   font-size: 2em;
+}
+
+#timestamp {
+  text-align: right;
+  font-size: 0.8em;
 }
